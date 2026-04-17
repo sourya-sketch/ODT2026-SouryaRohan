@@ -75,8 +75,11 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-`[Write here]`
+This project is a rhythm-based interactive game inspired by reflex machines and music rhythm games. It consists of six physical pads arranged spatially, each embedded with limit switches to detect hits. A central NeoPixel lighting system visually guides the player by sending light pulses toward a specific pad in sync with a beat.
+The player must hit the correct pad at the right moment, following the light cues. If the player misses the beat, the system pauses, reinforcing timing accuracy. The experience is designed to be fast, reactive, and physically engaging, combining elements of rhythm games, sports reflex training, and arcade-style play.
+The project supports both single-player and two-player modes. In single-player mode, the player tries to survive as long as possible while maintaining rhythm. In two-player mode, players compete against each other to survive. 
 
+Technologies involved include an ESP32 microcontroller, NeoPixel LED strips for dynamic lighting feedback, and limit switches for physical interaction detection. The system is programmed using MicroPython.
 ---
 
 # 2. Philosophy Fit
@@ -101,7 +104,7 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-`[Write here]`
+The experience is a fast-paced rhythm reaction game where players must respond quickly to visual cues. The player feels urgency, focus, and excitement as they try to match the beat and hit the correct pad. The system creates tension by giving limited time to react and rewards accuracy with continuous gameplay. Missing a beat interrupts the flow, making the player want to try again and improve. Players would want to retry because of the challenge, increasing speed, and the satisfaction of correctly timing hits in sync with the lights.
 
 ## 2.3 Design Persona
 Complete the sentence below:
@@ -109,7 +112,7 @@ Complete the sentence below:
 > We are designing this project as if we are a small creative studio making a **[toy / game / playable object / interactive experience]** for **[children / teens / adults / classmates / exhibition visitors / mixed audience]**.
 
 **Response:**  
-`[Write here]`
+We are designing this project as if we are a small creative studio making a game for classmates and exhibition visitors.
 
 ---
 
@@ -120,15 +123,15 @@ List what inspired the project.
 
 | Source Type | Title / Link | What Inspired You |
 |---|---|---|
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
+| Boxing Punching Machine | https://www.amazon.in/Lufjika-Machine-Bluetooth-Traineing-Equipment/dp/B0GCJWLZJZ?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=A3JOXW2N90ZGX9&th=1 | Spatial distribution of pads, light feature |
+| Whack-a-mole | https://www.youtube.com/watch?v=VoP1E9J4jpg | Game dynamics |
 
 ## 3.2 Original Twist
 What makes your project original?
 
 **Response:**  
-`[Write here]`
+Unlike traditional rhythm games that use screens, this project creates a fully physical interaction using punching pads and spatial lighting. The combination of directional light travel and physical impact makes the experience more immersive and bodily engaging.
+Software wise we have also introduced 2-player games and more experiences integrating music to make it stand out.
 
 ---
 
@@ -144,37 +147,37 @@ Examples:
 - move object → sensor detects → sound/light response → player reacts
 
 **Response:**  
-`[Write here]`
+light travels → player reacts → hits pad → system checks timing → continues or stops
 
 ## 4.2 Intended Player / Audience
 
 | Question | Response |
 |---|---|
-| Who is this for? | `[Write here]` |
-| Age range | `[Write here]` |
-| Solo or multiplayer | `[Write here]` |
-| Expected duration of one round | `[Write here]` |
-| What should the player feel? | `[Write here]` |
-| Is explanation required before use? | `[Write here]` |
+| Who is this for? | Students and exhibition visitors |
+| Age range | 15–25 |
+| Solo or multiplayer | Both |
+| Expected duration of one round |30 seconds – 2 minutes|
+| What should the player feel? | Excited, focused, competitive |
+| Is explanation required before use? | Minimal (intuitive interaction) |
 
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
 
-1. **Approach:** `[How does the player first encounter it?]`
-2. **Start:** `[How do they begin?]`
-3. **First Action:** `[What do they do first?]`
-4. **Main Interaction:** `[What keeps happening during use?]`
-5. **System Response:** `[How does the project respond?]`
-6. **Win / Lose / End Condition:** `[How does one round end?]`
-7. **Reset:** `[How does the next round begin?]`
+1. **Approach:** Player sees illuminated pads and central light source
+2. **Start:** Game begins automatically or via input
+3. **First Action:** Light travels to a pad
+4. **Main Interaction:** Player punches the correct pad on beat
+5. **System Response:** Lights confirm hit or stop on miss
+6. **Win / Lose / End Condition:** Game ends on missed beat
+7. **Reset:** System returns to idle state and restarts
 
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
 
-- `[Rule 1]`
-- `[Rule 2]`
-- `[Rule 3]`
-- `[Rule 4]`
+- Player must hit the pad indicated by the light
+- Player must hit within the given time window
+- Missing a beat ends the game
+- In two-player mode, players alternate turns
 
 ---
 
@@ -183,25 +186,24 @@ If your project is a game, list the rules clearly.
 ## 5.1 Definition of “Playable”
 Your project will be considered complete only if these conditions are met.
 
-- [ ] `[Condition 1]`
-- [ ] `[Condition 2]`
-- [ ] `[Condition 3]`
-- [ ] `[Condition 4]`
-- [ ] `[Condition 5]`
+- [ ] All 6 pads detect input reliably
+- [ ] LED strip correctly indicates target pad
+- [ ] Game loop runs continuously without crashing
+- [ ] Miss detection works correctly
+- [ ] Both single-player and two-player modes function
 
 ## 5.2 Minimum Viable Version
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
-`[Write here]`
+A basic version with 2–3 pads, working LED indication, and hit/miss detection without advanced animations or multiplayer.
 
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
 
-- `[Stretch feature 1]`
-- `[Stretch feature 2]`
-- `[Stretch feature 3]`
-
+- Increasing speed over time
+- Sound feedback (buzzer/music sync)
+- Score display system
 ---
 
 # 6. System Overview
@@ -209,17 +211,17 @@ What features are nice to have but not essential?
 ## 6.1 Project Type
 Check all that apply.
 
-- [ ] Electronics-based
+- [x] Electronics-based
 - [ ] Mechanical
-- [ ] Sensor-based
+- [x] Sensor-based
 - [ ] App-connected
 - [ ] Motorized
 - [ ] Sound-based
-- [ ] Light-based
+- [x] Light-based
 - [ ] Screen/UI-based
 - [ ] Fabricated structure
-- [ ] Game logic based
-- [ ] Installation / tabletop experience
+- [x] Game logic based
+- [x] Installation / tabletop experience
 - [ ] Other: `[Write here]`
 
 ## 6.2 High-Level System Description
@@ -233,7 +235,10 @@ Include:
 - app interaction if any.
 
 **Response:**  
-`[Write here]`
+
+The system takes input from limit switches placed under each pad. These inputs are processed by the ESP32 microcontroller, which determines whether the correct pad was hit within the time window.
+Based on the game logic, the ESP32 sends output signals to a NeoPixel LED strip, which visually indicates the target pad through traveling light animations.
+The physical structure consists of six pads arranged spatially, allowing the player to interact through punching. The system operates as a closed loop of input (hit detection), processing (timing logic), and output (LED feedback).
 
 ## 6.3 Input / Output Map
 
