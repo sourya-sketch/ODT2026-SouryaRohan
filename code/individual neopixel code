@@ -1,0 +1,8 @@
+from machine import Pin
+import neopixel
+import time
+
+np = neopixel.NeoPixel(Pin(5,Pin.OUT), 30)
+np[21]= (128,0,0)
+
+np.write()
