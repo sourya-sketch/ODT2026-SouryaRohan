@@ -897,7 +897,7 @@ Expected outcomes:
 What is the single biggest uncertainty in your project at this stage?
 
 **Response:**  
-`[Write here]`
+The single biggest uncertainty is the total latency of the end-to-end feedback loop. We are currently ensuring that the delay between the user physically hitting a pad (detected by the ESP32) and the corresponding audio/visual response on the PC is imperceptible. Minimizing this "input-to-feedback" lag to ensure a seamless, professional rhythm game feel—without sync drift during high-BPM gameplay—remains our primary technical challenge.
 
 ---
 
