@@ -297,7 +297,7 @@ Check all that apply.
 - [ ] Linkages
 - [ ] Hinges
 - [ ] Shafts
-- [ ] Springs
+- [x] Springs
 - [ ] Bearings
 - [ ] Wheels
 - [ ] Sliders
@@ -308,7 +308,13 @@ Check all that apply.
 Describe the mechanism and what it is meant to do.
 
 **Response:**  
-`[Write here]`
+`The system consists of six tapping pads, each integrated with a limit switch positioned beneath the surface. When the user taps a pad, the top surface compresses slightly and actuates the limit switch, converting the mechanical force into a digital input signal.
+
+Each pad is designed to ensure consistent force transfer while protecting the internal components. The structure includes a rigid base, a slightly flexible top layer, and internal spacing to allow controlled movement without damaging the switch.
+
+Surrounding each pad is a cluster of 15 NeoPixel LEDs (5 at the center leading up to it and 10 forming an outer ring), embedded within the structure. They are all soldered together. These LEDs provide immediate visual feedback corresponding to user interaction. The LEDs and the button will sync according to the beats.
+
+The overall mechanism is designed to be durable, responsive, and repeatable, enabling fast tapping interactions required for a rhythm-based gameplay system.`
 
 ## 8.3 Motion Planning
 If something moves, explain:
@@ -319,7 +325,20 @@ If something moves, explain:
 - what could go wrong.
 
 **Response:**  
-`[Write here]`
+`- What moves:
+The top surface of each tapping pad moves vertically by a small amount when pressed.
+
+- What causes the movement:
+User-applied force (finger tap) causes the pad surface to compress and activate the limit switch.
+
+- How far it moves:
+The displacement is minimal, typically around 1–3 mm, just enough to trigger the switch reliably.
+
+- How fast it moves:
+Movement is instantaneous and directly dependent on user tapping speed, supporting rapid repeated inputs.
+
+- What could go wrong:
+Potential issues include switch wear over time, inconsistent triggering due to uneven force distribution, structural loosening, or reduced responsiveness if the pad material degrades.`
 
 ## 8.4 Simulation / CAD / Animation Before Making
 If your project includes mechanical motion, document the digital planning before fabrication.
@@ -343,15 +362,25 @@ What changed after the CAD, animation, or simulation stage?
 
 | Component | Quantity | Purpose |
 |---|---:|---|
-| `[ESP32]` | `1` | `[Main controller]` |
-| `[Component]` | `[Qty]` | `[Purpose]` |
-| `[Component]` | `[Qty]` | `[Purpose]` |
+| `ESP32` | `1` | `Main controller to process inputs and control LEDs` |
+| `Limit Switch` | `6` | `Detects user taps from each pad` |
+| `NeoPixel LEDs` | `90` | `Provides visual feedback for each pad` |
+| `Resistor (330Ω)` | `1` | `Protects LED data line from voltage spikes` |
+| `Power Supply (5V)` | `1` | `owers the LED strip and system` |
+| `Jumper Wires` | `Multiple` | `Electrical connections between components` |
+| `Breadboard / PCB ` | `1` | `Mounting and organizing circuit connections` |
 
 ## 9.2 Wiring Plan
 Describe the main electrical connections.
 
 **Response:**  
-`[Write here]`
+`The ESP32 acts as the central controller. Each of the six limit switches is connected to a separate GPIO pin configured as digital input, with a common ground connection.
+
+The NeoPixel LEDs are connected in a chained configuration. A single data pin from the ESP32 is connected to the input of the first LED, and the signal propagates through all 90 LEDs.
+
+A resistor (330Ω) is placed between the ESP32 data pin and the first NeoPixel to protect the data line. A capacitor (1000µF) is connected across the power supply terminals to stabilize voltage and prevent fluctuations.
+
+The LEDs are powered using a 5V external power supply, while the ESP32 shares a common ground with the LED circuit to ensure proper signal reference.`
 
 ## 9.3 Circuit Diagram
 Insert a hand-drawn or software-made circuit diagram.
