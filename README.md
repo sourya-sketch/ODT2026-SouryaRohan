@@ -1010,7 +1010,7 @@ Our project is an interactive, physical rhythm game platform powered by an ESP32
 How did the project change from the initial idea?
 
 **Response:**  
-The project concept evolved significantly during development. Originally, we planned to build a wall-mounted "boxing-style" musical game. However, due to structural concerns and durability issues related to the mounting and high-impact nature of the game, we pivoted the design. The final iteration transitioned into a tabletop musical tapping game, which allowed us to maintain the core rhythm gameplay mechanics while ensuring a more stable, durable, and reliable user experience.
+The project concept evolved significantly during development. Originally, we planned to build a wall-mounted "boxing-style" musical game. However, due to structural concerns and durability issues related to the mounting and high-impact nature of the game, we pivoted the design. The final iteration transitioned into a tabletop musical tapping game, which allowed us to maintain the core rhythm gameplay mechanics while ensuring a more stable, durable, and reliable user experience. We were also initially going to cover the buttons with leather but chose cloth as it was letting the sponge move better within the enclosure of the cloth.
 
 ---
 
@@ -1021,7 +1021,7 @@ What did your team do well?
 What slowed you down?  
 How well did you manage time, tasks, and responsibilities?
 
-**Response:** Our team worked effectively by dividing responsibilities between hardware fabrication, firmware development, and the web dashboard backend. We did well in communicating during the crucial "pivot phase," where we successfully transitioned from the wall-mounted boxing game to a tabletop tapping game without losing project momentum. What slowed us down initially were the durability issues with the original mounting concept and the complexity of debugging the LED series logic; however, we managed our time by adopting an iterative, "test-often" approach, which allowed us to catch hardware failures early in the process rather than at the final stage.
+**Response:** Our team worked effectively by dividing responsibilities between hardware fabrication, firmware development, and the web dashboard backend. We did well in communicating during the crucial "pivot phase," where we successfully transitioned from the wall-mounted boxing game to a tabletop tapping game without losing project momentum. What slowed us down initially were the durability issues with the original mounting concept and the complexity of debugging the LED series logic, however, we managed our time by adopting an iterative, "test-often" approach, which allowed us to catch hardware failures early in the process rather than at the final stage. Later on, we also faced problems with the LED strips not lighting up which was fixed by finding the 
 
 ## 19.2 Technical Reflection
 What did you learn about:
