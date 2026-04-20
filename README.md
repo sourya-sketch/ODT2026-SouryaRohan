@@ -823,13 +823,13 @@ Documentation: We maintain documentation as a team. We documented in a lot of vi
 
 | Area | Main Owner | Support Owner |
 |---|---|---|
-| Concept and gameplay | `[Name]` | `[Name]` |
-| Electronics | `[Name]` | `[Name]` |
-| Coding | `[Name]` | `[Name]` |
-| App | `[Name]` | `[Name]` |
-| Mechanical build | `[Name]` | `[Name]` |
-| Testing | `[Name]` | `[Name]` |
-| Documentation | `[Name]` | `[Name]` |
+| Concept and gameplay | `Sourya` | `Rohan` |
+| Electronics | `Rohan` | `Sourya` |
+| Coding | `Sourya` | `Rohan` |
+| App | `Rohan` | `Sourya` |
+| Mechanical build | `Rohan` | `Sourya` |
+| Testing | `Sourya` | `Rohan` |
+| Documentation | `Sourya` | `Rohan` |
 
 ---
 
@@ -839,46 +839,46 @@ Documentation: We maintain documentation as a team. We documented in a lot of vi
 
 ### Week 1 — Plan and De-risk
 Expected outcomes:
-- [ ] Idea finalized
-- [ ] Core interaction decided
-- [ ] Sketches made
+- [x] Idea finalized
+- [x] Core interaction decided
+- [x] Sketches made
 - [ ] BOM completed
-- [ ] Purchase needs identified
+- [x] Purchase needs identified
 - [ ] Key uncertainty identified
-- [ ] Basic feasibility tested
+- [x] Basic feasibility tested
 
 ### Week 2 — Build Subsystems
 Expected outcomes:
-- [ ] Electronics tests completed
+- [x] Electronics tests completed
 - [ ] CAD / structure planning completed
-- [ ] App UI started if needed
-- [ ] Mechanical concept tested
+- [x] App UI started if needed
+- [x] Mechanical concept tested
 - [ ] Main subsystems partially working
 
 ### Week 3 — Integrate
 Expected outcomes:
-- [ ] Physical body built
-- [ ] Electronics integrated
+- [x] Physical body built
+- [x] Electronics integrated
 - [ ] Code connected to hardware
-- [ ] App connected if required
+- [x] App connected if required
 - [ ] First playable version exists
 
 ### Week 4 — Refine and Finish
 Expected outcomes:
-- [ ] Technical bugs reduced
-- [ ] Playtesting completed
-- [ ] Improvements made
-- [ ] Documentation completed
-- [ ] Final build ready
+- [x] Technical bugs reduced
+- [x] Playtesting completed
+- [x] Improvements made
+- [x] Documentation completed
+- [x] Final build ready
 
 ## 14.2 Weekly Update Log
 
 | Week | Planned Goal | What Actually Happened | What Changed | Next Steps |
 |---|---|---|---|---|
-| Week 1 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 2 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 3 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 4 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
+| Week 1 | Idea, Sketches | Finalized rhythm game concept and sourced materials. | Shifted from Bluetooth to Wi-Fi hosting for better accessibility. | Begin electronics testing. |
+| Week 2 | Build Subsystems | Tested NeoPixel/ESP32 logic; sourced free sponges. | Optimized LED logic for better sync, settled on acrylic for durability. | Integrate hardware into frame. |
+| Week 3 | Integration | Assembled the physical pad structure and wired components. | Adjusted switch debounce timing for higher responsiveness. | Finalize Serial and API sync. |
+| Week 4 | Refine and Finish | Completed software logic and polished Web UI. | Added multi-song selection via the web dashboard. | Final documentation & testing. |
 
 ---
 
