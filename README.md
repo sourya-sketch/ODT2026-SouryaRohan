@@ -52,7 +52,7 @@ By the final review, this README should clearly show:
 # 1. Team Identity
 
 ## 1.1 Studio / Group Name
-`Music Minds`
+`Rhythm Pads`
 
 ## 1.2 Team Members
 
@@ -1021,7 +1021,7 @@ What did your team do well?
 What slowed you down?  
 How well did you manage time, tasks, and responsibilities?
 
-**Response:** Our team worked effectively by dividing responsibilities between hardware fabrication, firmware development, and the web dashboard backend. We did well in communicating during the crucial "pivot phase," where we successfully transitioned from the wall-mounted boxing game to a tabletop tapping game without losing project momentum. What slowed us down initially were the durability issues with the original mounting concept and the complexity of debugging the LED series logic, however, we managed our time by adopting an iterative, "test-often" approach, which allowed us to catch hardware failures early in the process rather than at the final stage. Later on, we also faced problems with the LED strips not lighting up which was fixed by finding the 
+**Response:** Our team worked effectively by dividing responsibilities between hardware fabrication, firmware development, and the web dashboard backend. We did well in communicating during the crucial "pivot phase," where we successfully transitioned from the wall-mounted boxing game to a tabletop tapping game without losing project momentum. What slowed us down initially were the durability issues with the original mounting concept and the complexity of debugging the LED series logic. Later on, we also faced problems with the LED strips not lighting up which was fixed by finding the faulty wires which we had to solder again. We managed our time by adopting an iterative, "test-often" approach, which allowed us to catch hardware failures early in the process rather than at the final stage.
 
 ## 19.2 Technical Reflection
 What did you learn about:
