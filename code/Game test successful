@@ -1,0 +1,134 @@
+from machine import Pin
+import neopixel
+import time
+import random
+
+# --- CONFIG ---
+NUM_LEDS = 90
+LED_PIN = 5
+
+# ✅ CORRECTED ORDER (VERY IMPORTANT)
+PAD_PINS = [26, 25, 13, 14, 12, 27]
+
+LEDS_PER_PAD = 15
+ARM_LEDS = 5
+
+START_BPM = 60
+BPM_INCREMENT = 10
+BPM_INTERVAL = 10000  # every 10 sec
+
+HIT_WINDOW = 400
+MAX_MISSES = 3
+
+DEBOUNCE_MS = 150  # 🔥 stable debounce
+
+# --- SETUP ---
+np = neopixel.NeoPixel(Pin(LED_PIN), NUM_LEDS)
+switches = [Pin(p, Pin.IN, Pin.PULL_UP) for p in PAD_PINS]
+
+# 🔥 debounce timer per pad
+last_hit_time = [0] * 6
+
+# --- FUNCTIONS ---
+def clear_all():
+    for i in range(NUM_LEDS):
+        np[i] = (0, 0, 0)
+    np.write()
+
+def light_arm(start_led):
+    for i in range(ARM_LEDS):
+        np[start_led + i] = (0, 0, 255)
+        np.write()
+        time.sleep_ms(40)
+
+def light_pad(start_led):
+    for i in range(ARM_LEDS, LEDS_PER_PAD):
+        np[start_led + i] = (0, 255, 0)
+    np.write()
+
+def flash_pad(start_led, color, duration=150):
+    for i in range(start_led, start_led + LEDS_PER_PAD):
+        np[i] = color
+    np.write()
+    time.sleep_ms(duration)
+
+def game_over():
+    for i in range(NUM_LEDS):
+        np[i] = (255, 0, 0)
+    np.write()
+
+# 🔥 SIMPLE & RELIABLE DEBOUNCE
+def check_hit(index):
+    now = time.ticks_ms()
+    if switches[index].value() == 0:
+        if time.ticks_diff(now, last_hit_time[index]) > DEBOUNCE_MS:
+            last_hit_time[index] = now
+            return True
+    return False
+
+# --- GAME LOOP ---
+print("🎮 Starting Rhythm Game!")
+
+score = 0
+misses = 0
+bpm = START_BPM
+
+start_time = time.ticks_ms()
+last_bpm_increase = start_time
+
+while True:
+
+    # --- BPM INCREASE ---
+    now = time.ticks_ms()
+    if time.ticks_diff(now, last_bpm_increase) > BPM_INTERVAL:
+        bpm += BPM_INCREMENT
+        last_bpm_increase = now
+        print("⚡ BPM Increased to:", bpm)
+
+    beat_interval = int((60 / bpm) * 1000)
+
+    # --- RANDOM PAD ---
+    pad_index = random.randint(0, 5)
+
+    # ✅ CORRECT LED MAPPING
+    start_led = pad_index * LEDS_PER_PAD
+
+    # --- ARM ANIMATION ---
+    light_arm(start_led)
+
+    # --- PAD ACTIVE ---
+    light_pad(start_led)
+
+    # --- HIT WINDOW ---
+    hit = False
+    timeout = time.ticks_add(time.ticks_ms(), HIT_WINDOW)
+
+    while time.ticks_diff(timeout, time.ticks_ms()) > 0:
+        if check_hit(pad_index):
+            hit = True
+            break
+
+    # --- RESULT ---
+    if hit:
+        score += 1
+        print("✅ HIT | Score:", score)
+        flash_pad(start_led, (255, 255, 255))
+    else:
+        misses += 1
+        print("❌ MISS | Misses:", misses)
+        flash_pad(start_led, (255, 0, 0))
+
+    clear_all()
+
+    # --- GAME OVER ---
+    if misses >= MAX_MISSES:
+        print("💀 GAME OVER | Final Score:", score)
+        game_over()
+        break
+
+    # --- SYNC TO BPM ---
+    elapsed = time.ticks_diff(time.ticks_ms(), now)
+    remaining = beat_interval - elapsed
+
+    if remaining > 0:
+        time.sleep_ms(remaining)
