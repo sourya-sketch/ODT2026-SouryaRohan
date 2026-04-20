@@ -679,11 +679,12 @@ while True:
 ## 11.1 Is an app part of this project?
 - [ ] Yes
 - [ ] No
+- [x] Third party interface used
 
 If yes, complete this section.
 
 ## 11.2 Why is the app needed?
-Explain what the app adds to the experience.
+
 
 Examples:
 - remote control,
@@ -694,28 +695,32 @@ Examples:
 - displaying data.
 
 **Response:**  
-`[Write here]`
+Remote Control & Ease of Access: By hosting the interface on the ESP32 via Wi-Fi, the user can manage the system directly from a smartphone. This eliminates the need to physically interact with the laptop during gameplay, allowing for a more immersive training experience.
+
+Mode & Difficulty Selection: The interface allows for dynamic selection of songs and difficulty levels (BPM), enabling users to customize the challenge in real-time without pausing or restarting the connection to the PC.
+
+Centralized Game Management: It provides a user-friendly dashboard for starting and stopping the game, ensuring that the control layer is physically separated from the audio-processing layer (the PC).
 
 ## 11.3 App Features
 
 | Feature | Purpose |
 |---|---|
-| `[Bluetooth connect button]` | `[Purpose]` |
-| `[Score display]` | `[Purpose]` |
-| `[Control button / slider / label]` | `[Purpose]` |
+| `Song Selector` | `Enables selection of the specific audio track to be played during the game.` |
+| `Start/Stop Buttons` | `Provides tactile control to trigger the game start sequence or halt execution safely.` |
+| `Difficulty Selector` | `Allows the user to select song and see the bpm(beats per minute) to match the game intensity to their skill level.` |
 
 ## 11.4 UI Mockup
 Insert a sketch or screenshot of the app interface.
 
 **Insert image below:**  
-`[Upload image and link here]`
+`Image uploaded in images folder`
 
 ## 11.5 App Screen Flow
 
-1. `[Step 1]`
-2. `[Step 2]`
-3. `[Step 3]`
-4. `[Step 4]`
+1. `The user connects to the ESP32 Wi-Fi network and accesses the local web URL (192.168.4.1) via their smartphone browser. The main screen loads, displaying the "RHYTHMPAD" header and the scrollable list of available tracks categorized by difficulty (Easy vs. Hard).`
+2. `The user browses the library and taps on a specific track card out of the 3 available ones (e.g., "Sunflower"). This action triggers a focus event, highlighting the selected song for review.`
+3. `A modal pop-up appears, providing a clear summary of the song title, artist, BPM, and difficulty level. The user reviews these details and either taps "Start Game" to initialize the session or "Cancel" to return to the track list.`
+4. `Once "Start Game" is pressed, the web interface sends the configuration command to the ESP32. The hardware initializes the light sequences, and the system sends a trigger to the PC to begin synchronized audio playback.`
 
 ---
 
@@ -725,9 +730,13 @@ Insert a sketch or screenshot of the app interface.
 
 | Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
 |---|---:|---|---|---:|---|---|
-| `[ESP32]` | `1` | `Yes` | `No` | `0` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
+| `[ESP32]` | `1` | `Yes` | `No` | `0` | `ESP32-WROOM-32` | `Chosen for its built-in Wi-Fi, allowing the hosting of the web server for remote control.` |
+| `RGB LED Strips` | `2` | `No` | `Yes` | `980` | `NeoPixel` | `Addressable LEDs allow for individual control of each pixel, perfect for dynamic game feedback.` |
+| `Jumper Cables` | `50` | `Yes` | `Yes` | `100` | `M-F/M-M` | `Used for modular connections between the ESP32, sensors, and power rails.` |
+| `Sponges` | `6` | `No` | `Yes` | `sourced for free` | `High-density foam` | `Sourced for free as a cost-effective, impact-absorbing material for the pressure pads.` |
+| `Power Supply` | `1` | `Yes` | `Yes` | `0` | `5V Power supply` | `Required to power 90 LEDs at full brightness; 10A prevents power sag during intense visuals.` |
+| `Acrylic` | `12` | `No` | `Yes` | `0` | `High quality acrylic sheet` | `Required to dissipate the RGB light in a hazy effect.` |
+| `Wood` | `45x45cm` | `No` | `Yes` | `0` | `High quality thick Plywood sheet` | `Required to build the base of the game.` |
 
 ## 12.2 Material Justification
 Explain why you selected your main materials and components.
@@ -739,31 +748,40 @@ Examples:
 - Why bearing instead of a plain shaft hole?
 
 **Response:**  
-`[Write here]`
+Acrylic (Housing/Surface): We selected acrylic for the main structure because of its high durability and rigidity, which is essential for sustaining repeated impact during gameplay. Furthermore, We sanded it so its translucent properties allow us to diffuse the NeoPixel LED lighting effectively, creating a clean and hazy, professional "glow" effect when a pad is hit, which would not be possible with opaque materials like MDF or cardboard.
+
+Sponges (Impact Absorption): Sponges were sourced as a zero-cost, high-density cushioning solution. They provide necessary shock absorption for the limit switches, preventing mechanical damage from repeated impacts while being lightweight and easy to replace.
+
+ESP32 (Microcontroller): Chosen for its integrated Wi-Fi capabilities, which are central to our project's goal of enabling remote control via a smartphone without needing a dedicated app, effectively turning the device into a standalone web-hosted peripheral.
+
+RGB NeoPixel strip (Visual Feedback): These addressable LEDs were chosen for their individual controllability, allowing us to implement complex animation states (idle, target, hit, miss) that would be impossible with standard analog LEDs.
+
+Plywood (Rigid base): Required to build the base of the game for tapping the foam buttons.
+We didn't use MDF as it would break easily.
+
 
 ## 12.3 Items to Purchase Separately
 
 | Item | Why Needed | Purchase Link | Latest Safe Date to Procure | Status |
 |---|---|---|---|---|
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
+| `RGB LED strips` | `Visual feedback` | `https://robu.in/product/1m-ws2812b-5v-addressable-rgb-non-waterproof-led-strip-light-60leds-m` | `12-04-26` | `Received` |
 
 ## 12.4 Budget Summary
 
 | Budget Item | Estimated Cost |
 |---|---:|
-| Electronics | `[Cost]` |
-| Mechanical parts | `[Cost]` |
-| Fabrication materials | `[Cost]` |
-| Purchased extras | `[Cost]` |
-| Contingency | `[Cost]` |
-| **Total** | `[Cost]` |
+| Electronics | `980` |
+| Mechanical parts | `100` |
+| Fabrication materials | `0` |
+| Purchased extras | `200` |
+| Contingency | `200` |
+| **Total** | `1480` |
 
 ## 12.5 Budget Reflection
 If your cost is too high, what can be simplified, removed, substituted, or shared?
 
 **Response:**  
-`[Write here]`
+The total project cost of approximately 1,500 INR was well within our allocated budget and represents excellent value for the functionality achieved. By sourcing structural materials like sponges locally and wood from the lab, we kept fabrication costs to near zero, allowing us to prioritize our budget on high-quality electronics (LED strips) that are critical to the system's performance and visual feedback. This investment was highly worthwhile, as it resulted in a durable, responsive, and fully interactive game prototype that meets all our design requirements.
 
 ---
 
@@ -780,15 +798,23 @@ Include:
 - how documentation will be maintained.
 
 **Response:**  
-`[Write here]`
+Task Division: We operate on a collaborative model. Both team members contribute to both hardware assembly and software development. We assign a "lead" to specific tasks to ensure accountability, but the other member provides active support, pair-programming, and troubleshooting assistance.
+
+Decision Making: All major design, coding, or structural changes are decided through mutual discussion. We prioritize ideas that are most efficient and easiest to maintain.
+
+Progress Checks: We verify that hardware changes match the software code before finalizing any merge and also kept checking the wiring in between working many times to confirm the working of the game.
+
+Handling Delays: Since we share responsibility, if one of us faces a hurdle, we immediately shift focus to help resolve the blocker together, ensuring the project stays on track.
+
+Documentation: We maintain documentation as a team. We documented in a lot of videos. Before ending any session, we review the README.md together to ensure it reflects our combined progress accurately as well as the hardware parts of it including the wiring and the breadboard.
 
 ## 13.2 Task Breakdown
 
 | Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
 |---|---|---|---:|---|---|---|
-| T1 | `[Finalize concept]` | `[Name]` | `2` | `[Date]` | `None` | `To Do` |
-| T2 | `[Complete BOM]` | `[Name]` | `1` | `[Date]` | `T1` | `To Do` |
-| T3 | `[Test electronics]` | `[Name]` | `2` | `[Date]` | `T1` | `To Do` |
+| T1 | `Hardware Setup (Pads & LEDs)` | `Rohan & Sourya` | `10` | `16-04-26` | `20-04-26` | `Completed` |
+| T2 | `Firmware and control logic` | `Rohan & Sourya` | `8` | `17-04-26` | `T1` | `Completed` |
+| T3 | `Web Dashboard & Integration` | `Rohan & Sourya` | `7` | `18-04-26` | `T1` | `To Do` |
 | T4 | `[Build structure]` | `[Name]` | `4` | `[Date]` | `T1` | `To Do` |
 | T5 | `[Write control code]` | `[Name]` | `4` | `[Date]` | `T3` | `To Do` |
 | T6 | `[Integrate system]` | `[Name]` | `4` | `[Date]` | `T4, T5` | `To Do` |
