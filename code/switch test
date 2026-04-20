@@ -1,0 +1,13 @@
+from machine import Pin
+import time
+
+# Setup switch on GPIO 25 with internal pull-up
+switch = Pin(12, Pin.IN, Pin.PULL_UP)
+
+while True:
+    if switch.value() == 0:
+        print("Pressed")
+    else:
+        print("Not Pressed")
+    
+    time.sleep(0.2)  # small delay for readability
