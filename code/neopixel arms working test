@@ -1,0 +1,72 @@
+from machine import Pin
+import neopixel
+import time
+
+# --- CONFIGURATION ---
+NUM_LEDS = 90
+LED_PIN = 5
+# Switches: Pin 13, 12, 14, 25, 26, 27
+SWITCH_PINS = [13, 12, 14, 25, 26, 27]
+TEST_BPM = 60  # Start slow (60 BPM) to see if it works
+
+# --- SETUP ---
+np = neopixel.NeoPixel(Pin(LED_PIN), NUM_LEDS)
+switches = [Pin(p, Pin.IN, Pin.PULL_UP) for p in SWITCH_PINS]
+
+def clear_all():
+    for i in range(NUM_LEDS):
+        np[i] = (0, 0, 0)
+    np.write()
+
+def run_test_cycle(pad_index):
+    start_led = pad_index * 15
+    
+    # 1. ARM ANIMATION (The "Travel" phase)
+    # We light 5 LEDs one by one. 
+    for i in range(5):
+        np[start_led + i] = (0, 0, 255) # Blue Arm
+        np.write()
+        time.sleep_ms(50) # Speed of light traveling to the pad
+        
+    # 2. PAD ACTIVATION (The "Hit" phase)
+    # Light the remaining 10 LEDs around the ring
+    for i in range(5, 15):
+        np[start_led + i] = (0, 255, 0) # Green Pad
+    np.write()
+    
+    # 3. DETECTION WINDOW
+    # Check if the lever switch is pressed while the pad is Green
+    print(f"Testing Pad {pad_index + 1}...")
+    hit = False
+    timeout = time.ticks_add(time.ticks_ms(), 500) # 500ms window to press
+    
+    while time.ticks_diff(timeout, time.ticks_ms()) > 0:
+        if switches[pad_index].value() == 0: # Switch pressed to GND
+            hit = True
+            break
+            
+    if hit:
+        # Flash White for success
+        for i in range(start_led, start_led + 15):
+            np[i] = (255, 255, 255)
+        np.write()
+        print("✅ SWITCH DETECTED!")
+        time.sleep_ms(200)
+    else:
+        print("❌ NO HIT")
+
+    clear_all()
+
+# --- MAIN LOOP ---
+print("Starting Hardware Test. Press your limit switches when the pads turn green.")
+current_pad = 0
+
+while True:
+    run_test_cycle(current_pad)
+    
+    # Calculate delay based on BPM
+    # interval = (60 / BPM) - animation time
+    # For testing, we just use a static pause between pads
+    time.sleep_ms(int((60 / TEST_BPM) * 1000) - 800) 
+    
+    current_pad = (current_pad + 1) % 6
