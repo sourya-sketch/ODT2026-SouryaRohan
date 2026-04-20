@@ -888,10 +888,10 @@ Expected outcomes:
 
 | Risk | Type | Likelihood | Impact | Mitigation Plan | Owner |
 |---|---|---|---|---|---|
-| `[Example: Bluetooth disconnects]` | `Technical` | `Medium` | `High` | `[Fallback interaction / simplify connection flow]` | `[Name]` |
-| `[Example: Structure breaks during play]` | `Mechanical` | `Medium` | `High` | `[Reinforce joints / change material]` | `[Name]` |
-| `[Risk]` | `[Technical / Material / Time / Gameplay]` | `[Low/Medium/High]` | `[Low/Medium/High]` | `[Plan]` | `[Name]` |
-| `[Risk]` | `[Type]` | `[Low/Medium/High]` | `[Low/Medium/High]` | `[Plan]` | `[Name]` |
+| `Serial communication latency` | `Technical` | `Medium` | `High` | `[Implement a robust handshake protocol; keep serial buffer clear.` | `Sourya` |
+| `LED flicker / Power sag` | `Technical` | `High` | `Medium` | `Use a dedicated 5V 10A power supply; add large capacitors.` | `Rohan` |
+| `Mechanical switch wear` | `Mechanical` | `[Medium]` | `[High]` | `[Ensure sponge padding is sufficient; use durable microswitches.]` | `[Rohan]` |
+| `[Wi-Fi connectivity drops]` | `[Technical]` | `[Low]` | `[High]` | `[Ensure ESP32 is close to the router/device; include error handling.]` | `[Sourya]` |
 
 ## 15.2 Biggest Unknown Right Now
 What is the single biggest uncertainty in your project at this stage?
