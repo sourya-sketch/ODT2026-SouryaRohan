@@ -391,10 +391,10 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Question | Response |
 |---|---|
-| Power source | `[USB / battery / adapter / other]` |
-| Voltage required | `[Write here]` |
-| Current concerns | `[Write here]` |
-| Safety concerns | `[Write here]` |
+| Power source | `5V DC External Power Adapter` |
+| Voltage required | `5V DC` |
+| Current concerns | `90 NeoPixels at max brightness (white) draw ~5.4A. Ensure the PSU is rated for at least 6A–10A, or use software to limit max brightness to prevent current overload.` |
+| Safety concerns | `Avoid powering LEDs directly through the ESP32 (use direct power injection). Ensure correct polarity (common ground), use a fuse for the main power line, and ensure adequate wire gauge to prevent heating.` |
 
 ---
 
@@ -404,8 +404,10 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Tool / Platform | Purpose |
 |---|---|
-| `[MicroPython / Arduino / MIT App Inventor / CAD tool / other]` | `[Purpose]` |
-| `[Tool]` | `[Purpose]` |
+| `MicroPython` | `Firmware development and logic implementation for the ESP32 controller.` |
+| `HTML` | `Designing the frontend interface and structure for the user dashboard.` |
+| `Java` | `Implementing backend processing and application-level logic.` |
+| `Thonny IDE` | `The primary development environment for writing and uploading MicroPython code to the ESP32.` |
 
 ## 10.2 Software Logic
 Describe what the code must do.
