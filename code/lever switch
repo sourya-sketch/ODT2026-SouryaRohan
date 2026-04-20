@@ -1,0 +1,18 @@
+from machine import Pin
+import time
+
+switch = Pin(14, Pin.IN, Pin.PULL_UP) #14 to NO, Gnd to COM
+
+last_state = 1  # because pull-up
+
+while True:
+    current_state = switch.value()
+
+    # Detect click (falling edge)
+    if last_state == 1 and current_state == 0:
+        print("CLICK detected")
+
+        # debounce delay
+        time.sleep_ms(200)
+
+    last_state = current_state
