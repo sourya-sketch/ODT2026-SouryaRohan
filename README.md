@@ -812,14 +812,12 @@ Documentation: We maintain documentation as a team. We documented in a lot of vi
 
 | Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
 |---|---|---|---:|---|---|---|
-| T1 | `Hardware Setup (Pads & LEDs)` | `Rohan & Sourya` | `10` | `16-04-26` | `20-04-26` | `Completed` |
+| T1 | `Hardware Setup (Pads & LEDs)` | `Rohan & Sourya` | `10` | `-` | `16-04-26` | `20-04-26` | `Completed` |
 | T2 | `Firmware and control logic` | `Rohan & Sourya` | `8` | `17-04-26` | `T1` | `Completed` |
-| T3 | `Web Dashboard & Integration` | `Rohan & Sourya` | `7` | `18-04-26` | `T1` | `To Do` |
-| T4 | `[Build structure]` | `[Name]` | `4` | `[Date]` | `T1` | `To Do` |
-| T5 | `[Write control code]` | `[Name]` | `4` | `[Date]` | `T3` | `To Do` |
-| T6 | `[Integrate system]` | `[Name]` | `4` | `[Date]` | `T4, T5` | `To Do` |
-| T7 | `[Playtest]` | `[Name]` | `2` | `[Date]` | `T6` | `To Do` |
-| T8 | `[Refine and document]` | `[Name]` | `3` | `[Date]` | `T7` | `To Do` |
+| T3 | `Web Dashboard & Integration` | `Rohan & Sourya` | `7` | `18-04-26` | `T2` | `Completed` |
+| T4 | `System Sync (Serial/API)` | `Rohan & Sourya` | `6` | `18-04-26` | `T3` | `Completed` |
+| T5 | `Playtesting & Calibration` | `Rohan & Sourya` | `5` | `19-04-26` | `T4` | `Completed` |
+| T6 | `Final touches/ code tweaks & Game experience design` | `Rohan & Sourya` | `6` | `19-04-26` | `T5` | `Completed` |
 
 ## 13.3 Responsibility Split
 
