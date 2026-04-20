@@ -731,6 +731,7 @@ Insert a sketch or screenshot of the app interface.
 | Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
 |---|---:|---|---|---:|---|---|
 | `[ESP32]` | `1` | `Yes` | `No` | `0` | `ESP32-WROOM-32` | `Chosen for its built-in Wi-Fi, allowing the hosting of the web server for remote control.` |
+| `Limit switch` | `6` | `Yes` | `No` | `0` | `Limit switch` | `For spring-like mechanism` |
 | `RGB LED Strips` | `2` | `No` | `Yes` | `980` | `NeoPixel` | `Addressable LEDs allow for individual control of each pixel, perfect for dynamic game feedback.` |
 | `Jumper Cables` | `50` | `Yes` | `Yes` | `100` | `M-F/M-M` | `Used for modular connections between the ESP32, sensors, and power rails.` |
 | `Sponges` | `6` | `No` | `Yes` | `sourced for free` | `High-density foam` | `Sourced for free as a cost-effective, impact-absorbing material for the pressure pads.` |
@@ -907,34 +908,36 @@ The single biggest uncertainty is the total latency of the end-to-end feedback l
 
 | What Needs Testing | How You Will Test It | Success Condition |
 |---|---|---|
-| `[Bluetooth connection]` | `[Method]` | `[What counts as success?]` |
-| `[Mechanism movement]` | `[Method]` | `[What counts as success?]` |
-| `[Sensor behavior]` | `[Method]` | `[What counts as success?]` |
-| `[App communication]` | `[Method]` | `[What counts as success?]` |
+| `Wi-Fi Connectivity` | `Monitor serial output for IP assignment on startup.` | `Consistent connection to local network without drops.` |
+| `Mechanical Pad Response` | `Press pads repeatedly at varying speeds.` | `Switches trigger consistently with no mechanical "stuck" states.` |
+| `Sensor/LED Sync` | `Trigger sensor and observe LED feedback.` | `Instant (imperceptible) lighting change upon physical press.` |
+| `Web Dashboard App` | `Send commands from phone to ESP32.` | `Dashboard updates state instantly, ESP32 executes commands.` |
+| `End-to-End Latency` | `Compare physical hit time vs. audio/visual trigger.` | `Delay is under 50ms, feels "real-time" to the player.` |
+
 
 ## 16.2 Playtesting Plan
 
 | Question | How You Will Check |
 |---|---|
-| Do players understand what to do? | `[Method]` |
-| Is the interaction satisfying? | `[Method]` |
-| Do players want another turn? | `[Method]` |
-| Is the challenge balanced? | `[Method]` |
-| Is the response clear and immediate? | `[Method]` |
+| Do players understand what to do? | `Observe new users without instructions, see if they naturally know to hit the pads when the lights flash.` |
+| Is the interaction satisfying? | `Ask testers to rate the "tactile feel" (responsiveness) of the pads.` |
+| Do players want another turn? | `Monitor if players voluntarily restart the game or ask to play a different song after their first run.` |
+| Is the challenge balanced? | `Check if players can hit at least 70% of notes on "Easy" mode vs. failing quickly on "Hard" mode.` |
+| Is the response clear and immediate? | `Use a "lag test": check if the delay between physical impact and LED/audio feedback feels "instant" to the player.` |
 
 ## 16.3 Testing and Debugging Log
 
 | Date | Problem Found | Type | What You Tried | Result | Next Action |
 |---|---|---|---|---|---|
-| `[Date]` | `[Describe issue]` | `[Technical / Mechanical / UI / Gameplay]` | `[What you did]` | `[Worked / Partly / Failed]` | `[Next step]` |
-| `[Date]` | `[Describe issue]` | `[Type]` | `[What you did]` | `[Result]` | `[Next step]` |
+| `18-04-26` | `LEDs not working in a series` | `Mechanical` | `Redid the soldering` | `Worked` | `Testing LEDs` |
+| `19-04-26` | `ad unresponsive intermittently` | `Mechanical` | `Adjusted the wiring inside the sponges` | `Worked` | `Testing switches` |
 
 ## 16.4 Playtesting Notes
 
 | Tester | What They Did | What Confused Them | What They Enjoyed | What You Will Change |
 |---|---|---|---|---|
-| `[Peer / friend / classmate]` | `[Observation]` | `[Observation]` | `[Observation]` | `[Action]` |
-| `[Peer / friend / classmate]` | `[Observation]` | `[Observation]` | `[Observation]` | `[Action]` |
+| `Classmate` | `Played on 'Easy'` | `The initial calibration screen` | `The light-up feedback when hitting pads` | `Add clearer visual cue on light strips` |
+| `Friend` | `[Played on 'Hard'` | `Speed of the track selection` | `The tactile "clicky" feel of the pads` | `Tweak sensitivity on the switches` |
 
 ---
 
@@ -953,7 +956,13 @@ Include:
 - revisions.
 
 **Response:**  
-`[Write here]`
+Base Preparation: We utilized a plywood board as the primary structural base. After measuring the layout, we drilled precise holes to accommodate the control buttons and provide mounts for the LED array.
+
+Structural Assembly: We installed four wooden feet to the base to provide stability and ensure the device remains stationary during high-intensity gameplay.
+
+Electronics Integration: We soldered 24 addressable LEDs into a custom radial configuration. This layout features a 5-LED cluster at the center, extending outward to an outer ring of 10 LEDs which is all connected in a series.
+
+Final Assembly: Each button was aligned with the corresponding LED light path to ensure that visual feedback is synchronized with physical inputs. The wiring was routed through the base to keep the surface clean and prevent accidental disconnections during use.
 
 ## 17.2 Build Photos
 Add photos throughout the project.
@@ -966,11 +975,7 @@ Suggested images:
 - app screenshot,
 - final build.
 
-Example:
-```md
-
-
-
+```Images in folder 
 ```
 
 ## 17.3 Version History
