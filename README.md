@@ -960,7 +960,7 @@ Base Preparation: We utilized a plywood board as the primary structural base. Af
 
 Structural Assembly: We installed four wooden feet to the base to provide stability and ensure the device remains stationary during high-intensity gameplay.
 
-Electronics Integration: We soldered 24 addressable LEDs into a custom radial configuration. This layout features a 5-LED cluster at the center, extending outward to an outer ring of 10 LEDs which is all connected in a series.
+Electronics Integration: We soldered 12 addressable LEDs into a custom radial configuration. This layout features 6 of the 5-LED clusters at the center, extending outward to an outer ring of 6 10-LED strip which is all connected in a series.
 
 Final Assembly: Each button was aligned with the corresponding LED light path to ensure that visual feedback is synchronized with physical inputs. The wiring was routed through the base to keep the surface clean and prevent accidental disconnections during use.
 
@@ -982,9 +982,9 @@ Suggested images:
 
 | Version | Date | What Changed | Why |
 |---|---|---|---|
-| `v1` | `[Date]` | `[Describe]` | `[Reason]` |
-| `v2` | `[Date]` | `[Describe]` | `[Reason]` |
-| `v3` | `[Date]` | `[Describe]` | `[Reason]` |
+| ` v0.1 ` | ` 10-Apr-2026 ` | Initial Concept | Established project requirements and budget. |
+| ` v0.5 ` | ` 17-Apr-2026 ` | Electronics Prototype | Validated ESP32 firmware and LED radial configuration. |
+| ` v1.0 ` | ` 20-Apr-2026 ` | System Integration | Integrated hardware with Web dashboard and finalized docs. |
 
 ---
 
