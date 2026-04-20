@@ -244,9 +244,9 @@ The physical structure consists of six pads arranged spatially, allowing the pla
 
 | System Part | Type | What It Does |
 |---|---|---|
-| `Limit Switch` | Input | `Detects press from user inside the tapping pad and sends a signal to the controller` |
+| `Limit Switch(x6)` | Input | `Detects press from user inside the tapping pad and sends a signal to the controller` |
 | `ESP32 / Controller` | Processing | `Receives input signals, processes game logic (timing, scoring), and sends output signals` |
-| `LED Strip / RGB LEDs` | Output | ` Provides visual feedback (beat indicators, hit/miss signals)` |
+| `LED Strip / RGB LEDs(x90)` | Output | ` Provides visual feedback (beat indicators, hit/miss signals)` |
 | `Tapping Surface / Pad` | Physical Action | `Interface where user interacts, transfers force to sensors` |
 
 ---
@@ -279,10 +279,10 @@ Add a sketch with labels showing:
 
 | Dimension | Value |
 |---|---|
-| Length | `[Write here]` |
-| Width | `[Write here]` |
-| Height | `[Write here]` |
-| Estimated weight | `[Write here]` |
+| Length | `45 cm` |
+| Width | `45 cm` |
+| Height | `8 cm` |
+| Estimated weight | `1-2 kg` |
 
 ---
 
