@@ -960,7 +960,7 @@ Base Preparation: We utilized a plywood board as the primary structural base. Af
 
 Structural Assembly: We installed four wooden feet to the base to provide stability and ensure the device remains stationary during high-intensity gameplay.
 
-Electronics Integration: We soldered 12 addressable LEDs into a custom radial configuration. This layout features 6 of the 5-LED clusters at the center, extending outward to an outer ring of 6 10-LED strip which is all connected in a series.
+Electronics Integration: We soldered 12 addressable LEDs into a custom radial configuration. This layout features 6 of the 5-LED clusters at the center, extending outward to an outer ring of 6 10-LED strip which is all connected in a series of a total of 90 LEDs.
 
 Final Assembly: Each button was aligned with the corresponding LED light path to ensure that visual feedback is synchronized with physical inputs. The wiring was routed through the base to keep the surface clean and prevent accidental disconnections during use.
 
@@ -994,23 +994,23 @@ Suggested images:
 Describe the final version of your project.
 
 **Response:**  
-`[Write here]`
+Our project is an interactive, physical rhythm game platform powered by an ESP32 microcontroller. The system features a custom-fabricated wooden base equipped with tactile mechanical switches and a radial 12-LED array for real-time visual feedback which is arranged in such a way that 6 of the arrays are arranged around the buttons in 10 neopixel LED strips and 6 of the others are 5 neopixel LED strips leading up to the buttons from the centre. The game integrates with a custom web dashboard that allows users to select tracks and monitor their performance. By combining precise hardware fabrication with high-performance firmware and a seamless web-based backend, we created an immersive, responsive input system that effectively bridges physical play with digital gameplay. It also included a competitive system for playing including choosing difficulty. The lighting leads to the buttons one by one according to the beat, first from the 5 LED strip to the radial 10 LED strip around the button then to another one. In total there are 90 LEDS fixed in a series synced with the buttons.
 
 ## 18.2 What Works Well
-- `[Point 1]`
-- `[Point 2]`
-- `[Point 3]`
+- `Tactile Responsiveness: The integration of mechanical buttons with real-time LED feedback creates a satisfying "arcade-style" experience, where the physical impact is perfectly mirrored by the light sequence.`
+- `Immersive LED Array: Successfully synchronizing 90 addressable LEDs in a series allows for a high-impact visual display that effectively guides players through the beat, regardless of the song's complexity.`
+- `Dynamic Gameplay Features: The web dashboard successfully supports difficulty selection and a competitive tracking system, offering a polished user experience without the need for a dedicated heavy PC application.`
 
 ## 18.3 What Still Needs Improvement
-- `[Point 1]`
-- `[Point 2]`
-- `[Point 3]`
+- `Lack of a Persistent Scoreboard: While the system tracks gameplay, there is currently no visual leaderboard or persistent scoreboard on the web dashboard to display high scores or compare performance between players.`
+- `System Latency Optimization: As the complexity of the LED sequences increases, further optimization of the serial communication buffer between the ESP32 and the backend is needed to maintain zero-perceptible input-to-sound lag.`
+- `Wiring & Enclosure Aesthetics: While the hardware is fully functional, the current internal wiring and base assembly could benefit from cleaner cable management and a more robust, protective enclosure to improve durability and professional appearance.`
 
 ## 18.4 What Changed From the Original Plan
 How did the project change from the initial idea?
 
 **Response:**  
-`[Write here]`
+The project concept evolved significantly during development. Originally, we planned to build a wall-mounted "boxing-style" musical game. However, due to structural concerns and durability issues related to the mounting and high-impact nature of the game, we pivoted the design. The final iteration transitioned into a tabletop musical tapping game, which allowed us to maintain the core rhythm gameplay mechanics while ensuring a more stable, durable, and reliable user experience.
 
 ---
 
@@ -1021,8 +1021,7 @@ What did your team do well?
 What slowed you down?  
 How well did you manage time, tasks, and responsibilities?
 
-**Response:**  
-`[Write here]`
+**Response:** Our team worked effectively by dividing responsibilities between hardware fabrication, firmware development, and the web dashboard backend. We did well in communicating during the crucial "pivot phase," where we successfully transitioned from the wall-mounted boxing game to a tabletop tapping game without losing project momentum. What slowed us down initially were the durability issues with the original mounting concept and the complexity of debugging the LED series logic; however, we managed our time by adopting an iterative, "test-often" approach, which allowed us to catch hardware failures early in the process rather than at the final stage.
 
 ## 19.2 Technical Reflection
 What did you learn about:
