@@ -155,8 +155,8 @@ light travels → player reacts → hits pad → system checks timing → contin
 |---|---|
 | Who is this for? | Students and exhibition visitors |
 | Age range | 15–25 |
-| Solo or multiplayer | Both |
-| Expected duration of one round |30 seconds – 2 minutes|
+| Solo or multiplayer | Solo |
+| Expected duration of one round |30 seconds – 3 minutes|
 | What should the player feel? | Excited, focused, competitive |
 | Is explanation required before use? | Minimal (intuitive interaction) |
 
@@ -190,7 +190,6 @@ Your project will be considered complete only if these conditions are met.
 - [ ] LED strip correctly indicates target pad
 - [ ] Game loop runs continuously without crashing
 - [ ] Miss detection works correctly
-- [ ] Both single-player and two-player modes function
 
 ## 5.2 Minimum Viable Version
 What is the smallest version of this project that still delivers the core experience?
