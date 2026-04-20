@@ -422,7 +422,47 @@ Include:
 - reset behavior.
 
 **Response:**  
-`[Write here]`
+Startup Behavior
+The ESP32 initializes all hardware components, including the 90-LED NeoPixel strip and the 6 GPIO pins configured as digital inputs with pull-up resistors. The system creates a Wi-Fi access point and launches a web server at http://192.168.4.1, serving the HTML interface. Simultaneously, the PC-side Python script initializes pygame for audio and establishes serial communication with the ESP32, placing the system in a "ready" state waiting for commands.
+
+Input Handling
+Input is captured from three sources:
+
+Physical: The 6 limit switches detect hits (triggered by a LOW signal).
+
+Web Interface: The user can interact with the dashboard to set the BPM, or press the "Start" or "Stop" buttons, which trigger the appropriate API endpoints.
+
+Keyboard (PC): The Python script listens for keyboard interrupts: P to pause/resume the current audio track and Q to quit the program.
+
+Sensor Reading
+In every execution loop, the ESP32 reads the state of the 6 limit switches using Pin.value(). To prevent false triggers, a debounce algorithm—consisting of a ~20 ms delay—is applied. During an active beat, the system polls these inputs to determine if the correct pad is pressed within a valid 200 ms timing window.
+
+Decision Logic
+The system logic is governed by the selected BPM, which dictates the beat_interval using the formula 60 / BPM. At each interval, the system activates a target pad. The logic compares the user's physical input against the active target:
+
+Hit: Score increases.
+
+Miss: Miss count increments.
+If the miss_count reaches 3, the game automatically stops. On the PC side, the logic triggers the corresponding MP3 file playback and stops audio when a "Game Over" or "Stop" signal is received.
+
+Output Behavior
+Visual and audio feedback are synchronized for the user experience:
+
+LEDs: The first 5 LEDs serve as a blue "arm" animation. The next 10 LEDs act as target pads; they turn green to indicate a target, flash white on a hit, and turn red on a miss.
+
+Web Interface: The dashboard displays the real-time score, updated every 500 ms.
+
+Audio: pygame plays the selected song, with status signals (e.g., AUDIO_STARTED, AUDIO_ENDED) transmitted to the ESP32 to maintain sync.
+
+Communication Logic
+The system uses a dual-communication architecture:
+
+ESP32 ↔️ Web Browser: Communicates via HTTP requests (/start, /stop, /score) to handle user interface interactions.
+
+ESP32 ↔️ PC (Python): Uses serial communication (USB) to exchange game status updates (song selection, game over) and audio control signals. This ensures the hardware-side gameplay remains perfectly aligned with the PC-side audio playback.
+
+Reset Behavior
+Upon pressing "Stop" or triggering a "Game Over" event, the game loop halts immediately. The LEDs are cleared, and audio playback stops. When restarting the game, the system resets all global variables—score and miss counts are set to 0, and the game state is reinitialized to ensure a fresh session.
 
 ## 10.3 Code Flowchart
 Insert a flowchart showing your code logic.
@@ -438,7 +478,7 @@ Suggested sequence:
 - error handling.
 
 **Insert image below:**  
-`[Upload image and link here]`
+`Images are in image folder`
 
 ## 10.4 Pseudocode
 
