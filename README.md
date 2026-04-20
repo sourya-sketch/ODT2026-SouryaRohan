@@ -213,12 +213,12 @@ Check all that apply.
 - [x] Electronics-based
 - [ ] Mechanical
 - [x] Sensor-based
-- [ ] App-connected
+- [x] App-connected
 - [ ] Motorized
-- [ ] Sound-based
+- [x] Sound-based
 - [x] Light-based
-- [ ] Screen/UI-based
-- [ ] Fabricated structure
+- [x] Screen/UI-based
+- [x] Fabricated structure
 - [x] Game logic based
 - [x] Installation / tabletop experience
 - [ ] Other: `[Write here]`
@@ -843,26 +843,26 @@ Expected outcomes:
 - [x] Idea finalized
 - [x] Core interaction decided
 - [x] Sketches made
-- [ ] BOM completed
+- [x] BOM completed
 - [x] Purchase needs identified
-- [ ] Key uncertainty identified
+- [x] Key uncertainty identified
 - [x] Basic feasibility tested
 
 ### Week 2 — Build Subsystems
 Expected outcomes:
 - [x] Electronics tests completed
-- [ ] CAD / structure planning completed
+- [x] CAD / structure planning completed
 - [x] App UI started if needed
 - [x] Mechanical concept tested
-- [ ] Main subsystems partially working
+- [x] Main subsystems partially working
 
 ### Week 3 — Integrate
 Expected outcomes:
 - [x] Physical body built
 - [x] Electronics integrated
-- [ ] Code connected to hardware
+- [x] Code connected to hardware
 - [x] App connected if required
-- [ ] First playable version exists
+- [x] First playable version exists
 
 ### Week 4 — Refine and Finish
 Expected outcomes:
@@ -1031,8 +1031,12 @@ What did you learn about:
 - fabrication,
 - integration?
 
-**Response:**  
-`[Write here]`
+**Response:**
+- Electronics: We learned how to manage power distribution for LED arrays and the importance of solid, reliable soldering for minimizing connection errors. Debugging the LED series logic taught us how to troubleshoot signal continuity issues.
+- Coding: Developing firmware for the ESP32 introduced us to handling asynchronous tasks, such as maintaining web server responsiveness while simultaneously processing game input and lighting patterns.
+- Mechanisms: Transitioning to a tabletop design taught us how physical ergonomics affect player input accuracy and that "tactile" isn't just about the switch, but also the structural stability of the base.
+- Fabrication: We gained practical experience in material selection and precision drilling, learning that proper internal cable management is as important as the external aesthetic for long-term durability.
+- Integration: Bridging the gap between the physical hardware and the web-based dashboard highlighted the challenges of real-time data synchronization over Wi-Fi and the necessity of optimized serial communication.
 
 ## 19.3 Design Reflection
 What did you learn about:
@@ -1043,38 +1047,46 @@ What did you learn about:
 - player understanding,
 - iteration?
 
-**Response:**  
-`[Write here]`
+**Response:** 
+- Designing for Play: We learned that a rhythm game requires "forgiving" mechanics; if the input window is too strict, the game feels punishing rather than fun. Balancing the timing window was key to making it playable.
+- Delight: We realized that the most satisfying moments come from the "juice"—the combination of the physical click of the button and the immediate, bright LED feedback. It makes the player feel like they are truly controlling the music.
+- Clarity: We learned that visual cues must be intuitive. By mapping lights directly to the rhythm, players naturally understand when to press, reducing the need for complex on-screen instructions.
+- Physical Interaction: The transition from a wall-mounted design to a tabletop one showed us that ergonomics matter. The angle and height of the board significantly impact how long a player can comfortably play without fatigue.
+- Player Understanding: We observed that new users need a clear "starting" trigger. Seeing the LEDs pulse or "breathe" before a game starts acts as a perfect silent invitation to play.
+- Iteration: This project taught us that the first design is rarely the final one. Being willing to pivot from a wall-mounted to a tabletop form factor was the most important iteration we made, as it prioritized gameplay experience over our original concept.
 
 ## 19.4 If You Had One More Week
 What would you improve next?
 
-**Response:**  
-`[Write here]`
+**Response:** 
+- Persistent Scoreboard: We would implement a database-backed or local storage leaderboard to track high scores, adding a competitive element that makes players want to return for a higher rank.
+- Professional Enclosure: We would transition from the current wooden board to a custom 3D-printed or laser-cut enclosure. This would allow for perfect cable management and a more polished, commercial-grade aesthetic.
+- UI/UX Refinement: We would spend more time refining the web dashboard's CSS and layout to ensure it is fully responsive and visually striking on mobile devices.
+- Advanced Game Modes: We would add "Endless" or "Multiplayer" modes, allowing for longer play sessions and simultaneous gameplay, which would push the limits of our current ESP32 networking and latency optimization. Co-op mode was something we wanted to add.
 
 ---
 
 # 20. Final Submission Checklist
 
 Before submission, confirm that:
-- [ ] Team details are complete
-- [ ] Project description is complete
-- [ ] Inspiration sources are included
-- [ ] Player journey is written
-- [ ] Sketches are added
-- [ ] BOM is complete
-- [ ] Purchase list is complete
-- [ ] Budget summary is complete
-- [ ] Mechanical planning is documented if applicable
-- [ ] App planning is documented if applicable
-- [ ] Code flowchart is added
-- [ ] Task breakdown is complete
-- [ ] Weekly logs are updated
-- [ ] Risk register is complete
-- [ ] Testing log is updated
-- [ ] Playtesting notes are included
-- [ ] Build photos are included
-- [ ] Final reflection is written
+- [x] Team details are complete
+- [x] Project description is complete
+- [x] Inspiration sources are included
+- [x] Player journey is written
+- [x] Sketches are added
+- [x] BOM is complete
+- [x] Purchase list is complete
+- [x] Budget summary is complete
+- [x] Mechanical planning is documented if applicable
+- [x] App planning is documented if applicable
+- [x] Code flowchart is added
+- [x] Task breakdown is complete
+- [x] Weekly logs are updated
+- [x] Risk register is complete
+- [x] Testing log is updated
+- [x] Playtesting notes are included
+- [x] Build photos are included
+- [x] Final reflection is written
 
 ---
 
